@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="upload-container">
+    <h2>Upload Files</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="{% if 'success' in message %}success-message{% else %}error-message{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <div class="upload-zone">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose File:</label>
+                <input type="file" id="file" name="file" required>
+            </div>
+            <div class="btn-group">
+                <button type="submit" class="btn btn-blue">Upload File</button>
+                <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="upload-info">
+        <p>Supported file types: .txt, .pdf, .png, .jpg, .jpeg, .gif, .doc, .docx, .xls, .xlsx, .ppt, .pptx, .zip, .rar</p>
+        <p>Maximum file size: 10 GB</p>
+    </div>
+</div>
+{% endblock %}
