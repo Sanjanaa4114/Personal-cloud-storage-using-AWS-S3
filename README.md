@@ -1,5 +1,7 @@
  Personal-cloud-storage-using-AWS-S3 
- A web base application that allow users to securely upload, view, download, and delete files using Amazon S3 as a cloud storage. 
+ A web base application that allow users to securely
+ upload, view, download, and delete
+ files using Amazon S3 as a cloud storage. 
 
  Features:-
  User Authentication 
