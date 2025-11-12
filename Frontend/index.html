@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Cloud Storage</title>
+</head>
+<body>
+  <h1>Welcome to My Cloud Storage</h1>
+  <input type="file" id="fileInput"><br><br>
+  <button onclick="uploadFile()">Upload</button>
+
+  <script>
+    async function uploadFile() {
+      const file = document.getElementById('fileInput').files[0];
+      const data = await file.text();
+
+      const response = await fetch('YOUR_API_GATEWAY_URL', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          action: 'upload',
+          file_name: file.name,
+          file_content: data,
+          user: 'demo_user'
+        })
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    }
+  </script>
+</body>
+</html>
